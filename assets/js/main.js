@@ -65,7 +65,7 @@ scope = {
       $("#second-option").html(question.second_option_description)
       $("#details").html(question.details)
     },
-    renderOptionsResult: (questionResult, choosed) => {      
+    renderOptionsResult: (questionResult, choosed) => {
       loadPercent = async (per, q) => {
         for (i = 0; i <= per; i++) {
           await scope.utils.sleep(25)
@@ -79,14 +79,14 @@ scope = {
       templateFirstOption = `
       <div class="text-center">
         <span class="fs-4"><span id="first-option-percent">-%</span> ${choosed=='first-option' ? "agree" : "disagree"}</span><br />
-        <span>${questionResult.first_option_votes}</span><br />
+        <span>${scope.utils.formatNumberThousandsSep(questionResult.first_option_votes)}</span><br />
         <span>${questionResult.first_option_description}</span>
       </div>
       `
       templateSecondOption = `
       <div class="text-center">
         <span class="fs-4"><span id="second-option-percent">-%</span> ${choosed=='second-option' ? "agree" : "disagree"}</span><br />
-        <span>${questionResult.second_option_votes}</span><br />
+        <span>${scope.utils.formatNumberThousandsSep(questionResult.second_option_votes)}</span><br />
         <span>${questionResult.second_option_description}</span>
       </div>
       `
@@ -100,6 +100,9 @@ scope = {
   utils: {
     sleep: function(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
+    },
+    formatNumberThousandsSep(n) {
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
   }
 }
