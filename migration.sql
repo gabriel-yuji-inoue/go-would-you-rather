@@ -1,0 +1,1 @@
+CREATE TABLE `questions` ( `id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(100) NOT NULL , `first_option_description` VARCHAR(100) NOT NULL , `first_option_votes` INT NOT NULL , `second_option_description` VARCHAR(100) NOT NULL , `second_option_votes` INT NOT NULL , `details` VARCHAR(100) NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
